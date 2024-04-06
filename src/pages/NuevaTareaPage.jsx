@@ -140,7 +140,7 @@ export const NuevaTareaPage = () => {
                 <option value="salud">Salud</option>
                 <option value="diversion">Diversión</option>
                 <option value="tesis">Tesis</option>
-                <option value="padres">Padres</option>
+                <option value="familia">Familia</option>
                 <option value="juntos">Juntos</option>
               </select>
             </li>

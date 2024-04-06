@@ -29,13 +29,12 @@ import { useEffect } from "react";
 import { getNotificacion } from "../store/slices/thunks";
 
 
-
 export const InicioPage = () => {
   //Constantes**********************************************
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {notificacion} = useSelector ((state)=>state.tarea)
-
+  const {notificacion} = useSelector ((state)=>state.tarea);
+  
   //Funciones***********************************************
   const aNuevaTarea = () => {
     navigate("/nueva");
@@ -46,6 +45,10 @@ export const InicioPage = () => {
     navigate("/lista");
   };
 
+  const aCalendario = () => {
+    dispatch(setFiltro('todas'))
+    navigate("/calendario");
+  };
   
 
   //Efectos*************************************************
@@ -144,28 +147,28 @@ useEffect(() => {
       {/* linea siguiente *************************************/}
       <div className="containerInicio">
       <div
-          className="alumnos"
+          className="tesis"
           onClick={() => {
-            const nuevoFiltro = "alumnos";
+            const nuevoFiltro = "tesis";
             aListaDeTareas(nuevoFiltro);
           }}
         >
           <div className="icono">
             <img className="iconito" src={l8} alt="" />
           </div>
-          Alumnos
+          Tesis
         </div>
         <div
-          className="padres"
+          className="familia"
           onClick={() => {
-            const nuevoFiltro = "padres";
+            const nuevoFiltro = "familia";
             aListaDeTareas(nuevoFiltro);
           }}
         >
           <div className="icono">
             <img className="iconito" src={l17} alt="" />
           </div>
-          Padres
+          Familia
         </div>
         <div
           className="juntos"
@@ -189,6 +192,9 @@ useEffect(() => {
       notificacion[0][0] === 1 ? <div className="circulo-rojo"></div>
       : null
       }</div>
+      <button className="containerx">
+        <button className="aInicio" onClick={aCalendario}></button>
+      </button>
 
     </>
   );

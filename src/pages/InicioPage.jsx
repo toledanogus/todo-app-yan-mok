@@ -27,7 +27,7 @@ import l23 from "../assets/iconos2/23.png";
 import l24 from "../assets/iconos2/24.png";
 import { useEffect, useState } from "react";
 import { getNotificacion, getTareas, traerPendientes } from "../store/slices/thunks";
-
+import { compareAsc, startOfDay } from "date-fns";
 
 
 export const InicioPage = () => {
@@ -65,6 +65,30 @@ export const InicioPage = () => {
     return contador;
   };
 
+  const pendientesHoy = (pendientes, categoria) => {
+    let counter=0;
+  if (categoria === 'todas') {
+    const fechasTodas = pendientes.map(subarray => subarray[3]);
+    fechasTodas.map((elemento)=>{
+      const numerico = compareAsc(startOfDay(new Date()),startOfDay(new Date(elemento)));
+      if (numerico === 0) {
+        counter = counter+1;
+      }
+    })
+    return counter;
+  }
+    const subarraysCasa = pendientes.filter(subarray => subarray[2] === categoria);
+    const fechasDeCasa = subarraysCasa.map(subarray => subarray[3]);
+   
+    fechasDeCasa.map((elemento)=>{
+      const numerico = compareAsc(startOfDay(new Date()),startOfDay(new Date(elemento)));
+      if (numerico === 0) {
+        counter = counter+1;
+      }
+    })
+    return counter;
+  }
+
   //Efectos*************************************************
 useEffect(() => {
   dispatch(getNotificacion());
@@ -93,6 +117,10 @@ useEffect(() => {
             <img className="iconito" src={l7} alt="" />
           </div>
           Todas
+          {counterPendientes && pendientesHoy(counterPendientes, 'todas' )!= 0 ?
+          <div className="circulo-hoy">
+            {pendientesHoy(counterPendientes, 'todas' )}
+          </div>: null} 
         </div>
 
         <div
@@ -110,6 +138,10 @@ useEffect(() => {
             <img className="iconito" src={l5} alt="" />
           </div>
           Escuela
+          {counterPendientes && pendientesHoy(counterPendientes, 'escuela' )!= 0 ?
+          <div className="circulo-hoy">
+            {pendientesHoy(counterPendientes, 'escuela' )}
+          </div>: null} 
         </div>
         <div
           className="casa"
@@ -126,6 +158,10 @@ useEffect(() => {
             <img className="iconito" src={l21} alt="" />
           </div>
           Casa
+          {counterPendientes && pendientesHoy(counterPendientes, 'casa' )!= 0 ?
+          <div className="circulo-hoy">
+            {pendientesHoy(counterPendientes, 'casa' )}
+          </div>: null} 
         </div>
       </div>
       {/* linea siguiente *************************************/}
@@ -145,6 +181,10 @@ useEffect(() => {
             <img className="iconito" src={l24} alt="" />
           </div>
           Personal
+          {counterPendientes && pendientesHoy(counterPendientes, 'personal' )!= 0 ?
+          <div className="circulo-hoy">
+            {pendientesHoy(counterPendientes, 'personal' )}
+          </div>: null} 
         </div>
 
         <div
@@ -161,6 +201,10 @@ useEffect(() => {
             <img className="iconito" src={l20} alt="" />
           </div>
           Salud
+          {counterPendientes && pendientesHoy(counterPendientes, 'salud' )!= 0 ?
+          <div className="circulo-hoy">
+            {pendientesHoy(counterPendientes, 'salud' )}
+          </div>: null} 
         </div>
         <div
           className="diversion"
@@ -176,6 +220,10 @@ useEffect(() => {
             <img className="iconito" src={l11} alt="" />
           </div>
           Diversión
+          {counterPendientes && pendientesHoy(counterPendientes, 'diversion' )!= 0 ?
+          <div className="circulo-hoy">
+            {pendientesHoy(counterPendientes, 'diversion' )}
+          </div>: null} 
         </div>
       </div>
       {/* linea siguiente *************************************/}
@@ -194,6 +242,10 @@ useEffect(() => {
             <img className="iconito" src={l8} alt="" />
           </div>
           Tesis
+          {counterPendientes && pendientesHoy(counterPendientes, 'tesis' )!= 0 ?
+          <div className="circulo-hoy">
+            {pendientesHoy(counterPendientes, 'tesis' )}
+          </div>: null} 
         </div>
         <div
           className="familia"
@@ -209,6 +261,10 @@ useEffect(() => {
             <img className="iconito" src={l17} alt="" />
           </div>
           Familia
+          {counterPendientes && pendientesHoy(counterPendientes, 'familia' )!= 0 ?
+          <div className="circulo-hoy">
+            {pendientesHoy(counterPendientes, 'familia' )}
+          </div>: null} 
         </div>
         <div
           className="juntos"
@@ -224,6 +280,10 @@ useEffect(() => {
             <img className="iconito" src={l23} alt="" />
           </div>
           YG
+          {counterPendientes && pendientesHoy(counterPendientes, 'juntos' )!= 0 ?
+          <div className="circulo-hoy">
+            {pendientesHoy(counterPendientes, 'juntos' )}
+          </div>: null} 
         </div>
       </div>
       <div className="containerInicio">

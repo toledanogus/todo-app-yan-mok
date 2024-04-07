@@ -36,14 +36,14 @@ export const ListaTareas = () => {
   const isActive = (categorias) => {
     if (tareas) {
       const nuevasTareas = tareas.map(tarea => {
-        if (tarea[6] === categorias) {
+        if (tarea[6] === categorias && tarea[3] === 0 ) {
           const numerico = compareAsc(startOfDay(new Date()),startOfDay(new Date(tarea[5])));
           if (numerico===0) {
             return [...tarea, "nuevoValor"];
           }else{
             return [...tarea, "nada"];
           }
-        } else if(tarea[6] != categorias){
+        } else if(tarea[6] != categorias  && tarea[3] === 0 ){
           const numerico = compareAsc(startOfDay(new Date()),startOfDay(new Date(tarea[5])));
           if (numerico===0) {
             return [...tarea, "nuevoValor"];

@@ -7,7 +7,7 @@ import etiquetaImage1 from "../assets/etiqueta1.png";
 import etiquetaImage2 from "../assets/etiqueta2.png";
 import etiquetaImage3 from "../assets/etiqueta3.png";
 import { es } from "date-fns/locale";
-import { format, startOfDay, isWithinInterval, compareAsc } from "date-fns";
+import { format, startOfDay, compareAsc } from "date-fns";
 export const ListaTareas = () => {
   //constantes********************************************************
   const dispatch = useDispatch();

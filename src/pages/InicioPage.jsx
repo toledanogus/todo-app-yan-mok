@@ -25,15 +25,17 @@ import l21 from "../assets/iconos2/21.png";
 import l22 from "../assets/iconos2/22.png";
 import l23 from "../assets/iconos2/23.png";
 import l24 from "../assets/iconos2/24.png";
-import { useEffect } from "react";
-import { getNotificacion, getTareas } from "../store/slices/thunks";
+import { useEffect, useState } from "react";
+import { getNotificacion, getTareas, traerPendientes } from "../store/slices/thunks";
+
 
 
 export const InicioPage = () => {
   //Constantes**********************************************
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {notificacion} = useSelector ((state)=>state.tarea);
+  const {notificacion, counterPendientes} = useSelector ((state)=>state.tarea);
+  
   
   //Funciones***********************************************
   const aNuevaTarea = () => {
@@ -51,11 +53,26 @@ export const InicioPage = () => {
     navigate("/calendario");
   };
   
+  const contadorP = (counterPendientes, categoria) => {
+    let contador = 0;
+    for (let i = 0; i < counterPendientes.length; i++) {
+      for (let j = 0; j < counterPendientes[i].length; j++) {
+        if (counterPendientes[i][j] === categoria) {
+          contador++;
+        }
+      }
+    }
+    return contador;
+  };
 
   //Efectos*************************************************
 useEffect(() => {
   dispatch(getNotificacion());
-}, [])
+}, []);
+
+useEffect(() => {
+  dispatch(traerPendientes());
+}, []);
 
 
   return (
@@ -71,6 +88,7 @@ useEffect(() => {
             aListaDeTareas(nuevoFiltro);
           }}
         >
+          <div className="circuloCounter">{counterPendientes && counterPendientes.length}</div>
           <div className="icono">
             <img className="iconito" src={l7} alt="" />
           </div>
@@ -85,6 +103,9 @@ useEffect(() => {
             aListaDeTareas(nuevoFiltro);
           }}
         >
+          {counterPendientes && contadorP(counterPendientes, 'escuela') != 0 ? <div className="circuloCounter">{counterPendientes &&
+          contadorP(counterPendientes, 'escuela')}
+        </div> : null}
           <div className="icono">
             <img className="iconito" src={l5} alt="" />
           </div>
@@ -98,6 +119,9 @@ useEffect(() => {
             aListaDeTareas(nuevoFiltro);
           }}
         >
+          {counterPendientes && contadorP(counterPendientes, 'casa') != 0 ? <div className="circuloCounter">{counterPendientes &&
+          contadorP(counterPendientes, 'casa')}
+        </div> : null}
           <div className="icono">
             <img className="iconito" src={l21} alt="" />
           </div>
@@ -114,6 +138,9 @@ useEffect(() => {
             aListaDeTareas(nuevoFiltro);
           }}
         >
+          {counterPendientes && contadorP(counterPendientes, 'personal') != 0 ? <div className="circuloCounter">{counterPendientes &&
+          contadorP(counterPendientes, 'personal')}
+        </div> : null}
           <div className="icono">
             <img className="iconito" src={l24} alt="" />
           </div>
@@ -127,6 +154,9 @@ useEffect(() => {
             aListaDeTareas(nuevoFiltro);
           }}
         >
+          {counterPendientes && contadorP(counterPendientes, 'salud') != 0 ? <div className="circuloCounter">{counterPendientes &&
+          contadorP(counterPendientes, 'salud')}
+        </div> : null}
           <div className="icono">
             <img className="iconito" src={l20} alt="" />
           </div>
@@ -139,6 +169,9 @@ useEffect(() => {
             aListaDeTareas(nuevoFiltro);
           }}
         >
+          {counterPendientes && contadorP(counterPendientes, 'diversion') != 0 ? <div className="circuloCounter">{counterPendientes &&
+          contadorP(counterPendientes, 'diversion')}
+        </div> : null}
           <div className="icono">
             <img className="iconito" src={l11} alt="" />
           </div>
@@ -154,6 +187,9 @@ useEffect(() => {
             aListaDeTareas(nuevoFiltro);
           }}
         >
+          {counterPendientes && contadorP(counterPendientes, 'tesis') != 0 ? <div className="circuloCounter">{counterPendientes &&
+          contadorP(counterPendientes, 'tesis')}
+        </div> : null}
           <div className="icono">
             <img className="iconito" src={l8} alt="" />
           </div>
@@ -166,6 +202,9 @@ useEffect(() => {
             aListaDeTareas(nuevoFiltro);
           }}
         >
+          {counterPendientes && contadorP(counterPendientes, 'familia') != 0 ? <div className="circuloCounter">{counterPendientes &&
+          contadorP(counterPendientes, 'familia')}
+        </div> : null}
           <div className="icono">
             <img className="iconito" src={l17} alt="" />
           </div>
@@ -178,6 +217,9 @@ useEffect(() => {
             aListaDeTareas(nuevoFiltro);
           }}
         >
+          {counterPendientes && contadorP(counterPendientes, 'juntos') != 0 ? <div className="circuloCounter">{counterPendientes &&
+          contadorP(counterPendientes, 'juntos')}
+        </div> : null}
           <div className="icono">
             <img className="iconito" src={l23} alt="" />
           </div>

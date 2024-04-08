@@ -65,7 +65,7 @@ div.escuela, div.familia, div.personal, div.diversion {
 
 button{
   /* width: 100%; */
-  background-color: #274001;
+  background-color: #ff429e;
   border-radius: 10px;
   padding: 10px;
   border: 3px solid #3e3e3e;
@@ -136,7 +136,7 @@ button.registrar{
 }
 
 button.aInicio{
-  background-color: #274001;
+  background-color: #ff429e;
   color: #ffffff;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -144,7 +144,7 @@ button.aInicio{
 }
 
 .arrow{
-  color:#274001;
+  color:#ff429e;
   font-weight: bolder;
 }
 
@@ -287,7 +287,7 @@ table{
 }
 
 .der1{
-  background-color: #274001;
+  background-color: #ff429e;
 }
 
 .der2{
@@ -382,7 +382,7 @@ table{
 
 
 .rbc-toolbar button:active, .rbc-toolbar button.rbc-active{
-  background-color: #274001 !important;
+  background-color: #ff429e !important;
   color: white !important;
   border-color: #453831 !important;
 }
@@ -432,7 +432,15 @@ table{
   border: 2px solid #ffffff;
 }
 
+.rbc-show-more{
+  color: #6701ff !important;
+  background-color: rgba(255, 255, 255, 0) !important;
+  font-size: 10px !important;
+}
 
+.rbc-today{
+  background-color:#f539ec42 !important;
+}
 
 
 

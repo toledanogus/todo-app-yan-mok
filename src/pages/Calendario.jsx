@@ -91,7 +91,7 @@ export const Calendario = () => {
 
     const style = {
       backgroundColor: backgroundColor,
-      borderRadius: "0px",
+      borderRadius: "5px",
       opacity: 0.9,
       color: "white",
     };

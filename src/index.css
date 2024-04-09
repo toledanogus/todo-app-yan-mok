@@ -110,12 +110,18 @@ td {
   padding: 5px;
 }
 
+
+
 .tituloTarea{
   text-align: left;
   max-width: 200px; /* Ancho máximo de la columna Nombre */
   overflow: hidden;
   text-overflow: ellipsis; /* Mostrar puntos suspensivos (...) si el texto no cabe */
   white-space: wrap; 
+}
+
+.tituloTarea::after{
+  content: ".";
 }
 
 .activo{
@@ -129,6 +135,10 @@ td {
   border-radius: 12px;
   border: 1px solid #8D5ABF;
   box-shadow: 0 0 5px 0px #8D5ABF;
+}
+
+.activo::after{
+  content: ".";
 }
 
 button.registrar{
@@ -257,6 +267,7 @@ table{
   border-radius: 12px;
   background-color: #f1e1ff;
   padding: 5px;
+  border-spacing: 5px 10px;
 }
 
 .botonesPar{
